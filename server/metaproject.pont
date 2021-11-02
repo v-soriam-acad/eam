@@ -1,4 +1,4 @@
-; Wed Jul 11 20:59:11 CDT 2018
+; Tue Nov 02 02:23:52 COT 2021
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -7,7 +7,31 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
-	(single-slot email
+	(single-slot propertyName
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot lastLogin
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot allowedOperation
+		(type INSTANCE)
+;+		(allowed-classes Operation)
+		(create-accessor read-write))
+	(multislot group
+		(type INSTANCE)
+;+		(allowed-classes Group)
+		(default [metaproject_Instance_0])
+;+		(inverse-slot member)
+		(create-accessor read-write))
+	(single-slot policyModifiableByClient
+;+		(comment "If this property is set to true, it means that Protege and WebProtege clients will be able to change the policy of the object where this property is applied.")
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot hostName
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -16,25 +40,9 @@
 ;+		(allowed-classes User)
 ;+		(inverse-slot group)
 		(create-accessor read-write))
-	(single-slot name_
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot allowedOperation
+	(multislot allowedGroupOperation
 		(type INSTANCE)
-;+		(allowed-classes Operation)
-		(create-accessor read-write))
-	(multislot owner
-		(type INSTANCE)
-;+		(allowed-classes User)
-		(create-accessor read-write))
-	(multislot properties
-		(type INSTANCE)
-;+		(allowed-classes PropertyValue)
-		(create-accessor read-write))
-	(single-slot location
-		(type STRING)
-;+		(cardinality 0 1)
+;+		(allowed-classes GroupOperation)
 		(create-accessor read-write))
 	(single-slot description
 		(type STRING)
@@ -44,54 +52,46 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot properties
+		(type INSTANCE)
+;+		(allowed-classes PropertyValue)
+		(create-accessor read-write))
+	(multislot owner
+		(type INSTANCE)
+;+		(allowed-classes User)
+		(create-accessor read-write))
 	(single-slot annotationProject
 		(type INSTANCE)
 ;+		(allowed-classes Project)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot password
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot salt
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot allowedGroupOperation
-		(type INSTANCE)
-;+		(allowed-classes GroupOperation)
-		(create-accessor read-write))
-	(multislot group
-		(type INSTANCE)
-;+		(allowed-classes Group)
-		(default [metaproject_Instance_0])
-;+		(inverse-slot member)
-		(create-accessor read-write))
-	(single-slot password
+	(single-slot location
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot allowedGroup
-		(type INSTANCE)
-;+		(allowed-classes Group)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot propertyName
+	(single-slot name_
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot policyModifiableByClient
-;+		(comment "If this property is set to true, it means that Protege and WebProtege clients will be able to change the policy of the object where this property is applied.")
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
+	(single-slot email
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot inCollection
 		(type INSTANCE)
 ;+		(allowed-classes PolicyControlledObjectCollection)
 		(create-accessor read-write))
-	(single-slot lastLogin
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot hostName
-		(type STRING)
+	(single-slot allowedGroup
+		(type INSTANCE)
+;+		(allowed-classes Group)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot propertyValue
@@ -102,27 +102,23 @@
 (defclass User
 	(is-a USER)
 	(role concrete)
-	(multislot properties
-		(type INSTANCE)
-;+		(allowed-classes PropertyValue)
-		(create-accessor read-write))
-	(single-slot description
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot lastAccess
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot email
+	(single-slot lastLogin
 		(type STRING)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot properties
+		(type INSTANCE)
+;+		(allowed-classes PropertyValue)
 		(create-accessor read-write))
 	(single-slot salt
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot name_
+	(single-slot password
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -131,11 +127,15 @@
 ;+		(allowed-classes Group)
 		(default [metaproject_Instance_0])
 		(create-accessor read-write))
-	(single-slot password
+	(single-slot name_
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot lastLogin
+	(single-slot email
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot description
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
@@ -147,11 +147,11 @@
 		(type INSTANCE)
 ;+		(allowed-classes PropertyValue)
 		(create-accessor read-write))
-	(single-slot description
+	(single-slot name_
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot name_
+	(single-slot description
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
@@ -175,19 +175,23 @@
 		(type INSTANCE)
 ;+		(allowed-classes PropertyValue)
 		(create-accessor read-write))
+	(multislot allowedOperation
+		(type INSTANCE)
+;+		(allowed-classes Operation)
+		(create-accessor read-write))
 	(single-slot allowedGroup
 		(type INSTANCE)
 ;+		(allowed-classes Group)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot allowedOperation
-		(type INSTANCE)
-;+		(allowed-classes Operation)
 		(create-accessor read-write)))
 
 (defclass PolicyControlledObject
 	(is-a USER)
 	(role concrete)
+	(multislot inCollection
+		(type INSTANCE)
+;+		(allowed-classes PolicyControlledObjectCollection)
+		(create-accessor read-write))
 	(multislot properties
 		(type INSTANCE)
 ;+		(allowed-classes PropertyValue)
@@ -199,14 +203,6 @@
 		(default TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot description
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot inCollection
-		(type INSTANCE)
-;+		(allowed-classes PolicyControlledObjectCollection)
-		(create-accessor read-write))
 	(single-slot name_
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -214,28 +210,32 @@
 	(multislot allowedGroupOperation
 		(type INSTANCE)
 ;+		(allowed-classes GroupOperation)
+		(create-accessor read-write))
+	(single-slot description
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Project "This class represents the class of all projects.  When the server reads this ontology, it examines each instance of this class and attempts to load the project associated with that instance.  The only two fields that the server examines are the location, which represents the location of the project file in the file system (relative paths  are allowed) and the name, which represents the string thhat is shown to the user so the user  can choose a project to edit."
 	(is-a PolicyControlledObject)
 	(role concrete)
-	(single-slot location
-		(type STRING)
-;+		(cardinality 0 1)
+	(multislot owner
+		(type INSTANCE)
+;+		(allowed-classes User)
 		(create-accessor read-write))
 	(single-slot annotationProject
 		(type INSTANCE)
 ;+		(allowed-classes Project)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot location
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot allowedGroupOperation
 		(type INSTANCE)
 ;+		(allowed-classes GroupOperation)
 		(default [metaproject_Instance_10008])
-		(create-accessor read-write))
-	(multislot owner
-		(type INSTANCE)
-;+		(allowed-classes User)
 		(create-accessor read-write)))
 
 (defclass Server
@@ -257,11 +257,11 @@
 (defclass PropertyValue
 	(is-a USER)
 	(role concrete)
-	(single-slot propertyValue
+	(single-slot propertyName
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot propertyName
+	(single-slot propertyValue
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))

@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<knowledge_base
+	xmlns="http://protege.stanford.edu/xml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://protege.stanford.edu/xml http://protege.stanford.edu/xml/schema/protege.xsd">
+
+	<simple_instance>
+		<name>essential_prj_CC_Instance_660002</name>
+		<type>Business_Process</type>
+		<own_slot_value>
+			<slot_reference>description</slot_reference>
+			<value value_type="string">A demonstration Business Process to show the Essential Integration Server is working.</value>
+		</own_slot_value>
+		<own_slot_value>
+			<slot_reference>name</slot_reference>
+			<value value_type="string">MyProcess1</value>
+		</own_slot_value>
+	</simple_instance>
+	
+	<simple_instance>
+		<name>essential_prj_CC_Instance_660003</name>
+		<type>Business_Process</type>
+		<own_slot_value>
+			<slot_reference>description</slot_reference>
+			<value value_type="string">A demonstration Business Process to show the Essential Integration Server is working.</value>
+		</own_slot_value>
+		<own_slot_value>
+			<slot_reference>name</slot_reference>
+			<value value_type="string">MyProcess2</value>
+		</own_slot_value>
+	</simple_instance>
+	
+</knowledge_base>

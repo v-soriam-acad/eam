@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TidyWidgetsUpdate" basedir=".">
+    <!-- 
+        * Copyright (c)2009-2020 Enterprise Architecture Solutions ltd.
+        * This file is part of Essential Architecture Manager, 
+        * the Essential Architecture Meta Model and The Essential Project.
+        *
+        * Essential Architecture Manager is free software: you can redistribute it and/or modify
+        * it under the terms of the GNU General Public License as published by
+        * the Free Software Foundation, either version 3 of the License, or
+        * (at your option) any later version.
+        *
+        * Essential Architecture Manager is distributed in the hope that it will be useful,
+        * but WITHOUT ANY WARRANTY; without even the implied warranty of
+        * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        * GNU General Public License for more details.
+        *
+        * You should have received a copy of the GNU General Public License
+        * along with Essential Architecture Manager.  If not, see <http://www.gnu.org/licenses/>.
+        * 
+        
+        Ant Script to tidy up the Widgets install AFTER the new version has been installed.
+        
+        27.11.2009    JWC    First version
+        12.08.2013    JWC    Added tidyup of snapshot tab
+        01.05.2015    JWC    Revised to perform v5 install
+        12.02.2016    JWC    Remove old JARs of essential-xml-3.0.jar
+        16.03.2017    JWC    Remove old tab JARs from 3 tab packages
+        17.03.2017    JWC    Make the essential-xml-xx.jar variable driven
+        11.04.2017    JWC    Remove old commons-logging-1.1.jar and commons-codec-1.3.jar from Widgets
+        06.02.2020    JWC    Updated the list of old library JARs that should be deleted on install for upgrades
+    -->
+    
+    <!-- After the widgets update has been installed, tidy up old JARs etc. -->
+    <target name="widgets" description="Tidy up the widgets install folder after the new version has been installed">
+        
+        <!-- Set working directory -->
+        <property name="widget_dir" 
+                  description="Location of the existing widgets install" 
+                  value="${protegeplugins.home}/com.enterprise_architecture.essential.widgets"/>
+        
+        <!-- Remove old widgets JAR -->
+        <delete quiet="true"> 
+            <fileset dir="${widget_dir}">
+                <include name="essential-widgets*.jar"/> 
+                <exclude name="${currentwidgets.filename}.jar"/>
+            </fileset>
+        </delete>
+        
+        <!-- Remove the old Essential XML -->
+        <delete quiet="true"> 
+            <fileset dir="${widget_dir}">
+                <include name="essential-xml-*.jar"/>                
+                <exclude name="${currentxml.filename}.jar"/>                
+            </fileset>
+        </delete>
+        
+        <!-- Remove old Apache HTTP client stuff (version 3). Set default excludes to "no" 
+        to delete directory as well -->
+        <delete quiet="true">
+            <fileset dir="${widget_dir}">
+                <include name="httpclient-4.0.jar"/>
+                <include name="httpcore-4.0.1.jar"/>
+                <include name="httpmime-4.0.jar"/>
+                <include name="commons-codec-1.3.jar"/>
+                <include name="commons-logging-1.1.jar"/>
+                <include name="httpcore-4.4.jar"/>
+                <include name="httpmime-4.3.6.jar"/>
+                <include name="httpclient-4.3.6.jar"/>
+                <include name="commons-codec-1.6.jar"/>
+                <include name="commons-logging-1.1.3.jar"/>
+            </fileset>
+        </delete>
+        
+    </target>
+    
+    <!-- After the snapshot tab update has been installed, tidy up old JARs etc. -->
+    <target name="snapshot" description="Tidy up the snapshot tab install folder after the new version has been installed">
+        
+        <!-- Set working directory -->
+        <property name="snapshot_dir" 
+            description="Location of the existing snapshot tab install" 
+            value="${protegeplugins.home}/com.enterprise_architecture.essential.snapshot"/>
+        
+        <!-- Remove old snapshot and essential XML JAR -->
+        <delete quiet="true"> 
+            <fileset dir="${snapshot_dir}">
+                <include name="essential-snapshot-tab*.jar"/>                 
+                <include name="essential-xml-*.jar"/>                
+                <exclude name="${currentxml.filename}.jar"/>
+                <exclude name="${currentsnapshot.filename}.jar"/>
+            </fileset>
+        </delete>
+        
+    </target>
+    
+    <!-- After the Update tab update has been installed, tidy up old JARs etc. -->
+    <target name="update" description="Tidy up the update tab install folder after the new version has been installed">
+        
+        <!-- Set working directory -->
+        <property name="update_dir" 
+            description="Location of the existing snapshot tab install" 
+            value="${protegeplugins.home}/com.enterprise_architecture.essential.update"/>
+        
+        <!-- Remove old snapshot JAR -->
+        <delete quiet="true"> 
+            <fileset dir="${update_dir}">
+                <include name="essential-update-tab*.jar"/>                 
+                <exclude name="${currentupdatetab.filename}.jar"/>
+            </fileset>
+        </delete>
+        
+    </target>
+</project>

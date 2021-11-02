@@ -1,0 +1,21 @@
+Detected Java version: 1.7 in: /usr/lib/jvm/java-1.8-openjdk/jre
+Detected OS: Linux
+parsing buildfile jar:file:/usr/local/tomcat/essentialinstallupgrade67.jar!/org/apache/tools/ant/antlib.xml with URI = jar:file:/usr/local/tomcat/essentialinstallupgrade67.jar!/org/apache/tools/ant/antlib.xml from a zip file
+Build sequence for target(s) `calltarget' is [calltarget]
+Complete build sequence is [calltarget]
+
+calltarget:
+Project base dir set to: /usr/local/tomcat
+Project base dir set to: /usr/local/tomcat
+      [ant] calling target(s) [update] in build file /opt/essentialAM/install/tidyWidgets.xml
+parsing buildfile /opt/essentialAM/install/tidyWidgets.xml with URI = file:/opt/essentialAM/install/tidyWidgets.xml
+Project base dir set to: /usr/local/tomcat
+      [ant] Entering /opt/essentialAM/install/tidyWidgets.xml...
+Build sequence for target(s) `update' is [update]
+Complete build sequence is [update, snapshot, widgets, ]
+
+update:
+      [ant] Exiting /opt/essentialAM/install/tidyWidgets.xml.
+
+BUILD SUCCESSFUL
+Total time: 0 seconds

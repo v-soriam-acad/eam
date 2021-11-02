@@ -41,7 +41,7 @@ MAINCLASS=edu.stanford.smi.protege.server.Server
 
 
 # ------------------- JVM Options ------------------- 
-MAX_MEMORY=-Xmx500M
+MAX_MEMORY=-Xmx1500M
 HEADLESS=-Djava.awt.headless=true
 CODEBASE_URL=file:/root/Protege_3.5/protege.jar
 CODEBASE=-Djava.rmi.server.codebase=$CODEBASE_URL

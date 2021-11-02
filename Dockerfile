@@ -5,7 +5,7 @@ LABEL LABEL maintainer="kaiser.andreas@gmail.com"
 EXPOSE 5200 5100
 #ENV
 ENV CODEBASE_URL file:/root/Protege_3.5/protege.jar
-ENV EAM_VERSION 62
+#ENV EAM_VERSION 612
 
 # Install some tools
 RUN   apk update \
@@ -13,16 +13,16 @@ RUN   apk update \
   &&   update-ca-certificates
 
 # Download essential project files and protege
-RUN wget --tries=3 --progress=bar:force:noscroll https://enterprise-architecture.org/downloads_area/essentialinstall$EAM_VERSION.install \
-  && wget --tries=3 --progress=bar:force:noscroll https://protege.stanford.edu/download/protege/3.5/installanywhere/Web_Installers/InstData/Linux/NoVM/install_protege_3.5.bin
+RUN wget --tries=3 --progress=bar:force:noscroll https://protege.stanford.edu/download/protege/3.5/installanywhere/Web_Installers/InstData/Linux/NoVM/install_protege_3.5.bin
 
 # Copy auto install files to folder
-COPY protege-response.txt auto-install.xml ./
-
+COPY essentialinstallupgrade67.jar protege-response.txt auto-install.xml ./
+COPY essential_import_utility_251.war /usr/local/tomcat/webapps/essential_import_utility.war
+COPY essential_viewer_6144.war /usr/local/tomcat/webapps/essential_viewer.war
 # Install tools
 RUN chmod u+x install_protege_3.5.bin \
   && ./install_protege_3.5.bin -i console -f protege-response.txt \
-  && java -jar essentialinstall$EAM_VERSION.install auto-install.xml
+  && java -jar essentialinstallupgrade67.jar auto-install.xml
 
 RUN rm ./install_protege_3.5.bin
 
