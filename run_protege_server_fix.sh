@@ -45,7 +45,7 @@ MAX_MEMORY=-Xmx1500M
 HEADLESS=-Djava.awt.headless=true
 CODEBASE_URL=file:/root/Protege_3.5/protege.jar
 CODEBASE=-Djava.rmi.server.codebase=$CODEBASE_URL
-HOSTNAME_PARAM=-Djava.rmi.server.hostname=localhost
+HOSTNAME_PARAM=-Djava.rmi.server.hostname=65.21.7.179
 TX="-Dtransaction.level=READ_COMMITTED"
 LOG4J_OPT="-Dlog4j.configuration=file:log4j.xml"
 
