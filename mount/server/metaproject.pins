@@ -1,4 +1,4 @@
-; Tue Nov 02 02:23:52 COT 2021
+; Tue Nov 02 03:38:40 COT 2021
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -137,6 +137,15 @@
 	(location "/opt/essentialAM/annotation_essential_baseline_6_14.pprj")
 	(name "Collaborative Baseline Annotations")
 	(policyModifiableByClient TRUE))
+
+([metaproject_Class50000] of  Server
+
+	(allowedGroupOperation
+		[metaproject_Class20010]
+		[metaproject_Class30003])
+	(description "The server on which the policies apply.\nCurrent implementaion does not take into account the hostname, so all the policies (allowed group operations) are applied to this one instance.")
+	(hostName "65.21.7.179")
+	(name "MyServer"))
 
 ([metaproject_Instance_0] of  Group
 

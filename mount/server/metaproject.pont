@@ -1,4 +1,4 @@
-; Tue Nov 02 02:23:52 COT 2021
+; Tue Nov 02 03:38:40 COT 2021
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -77,11 +77,11 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot name_
+	(single-slot email
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot email
+	(single-slot name_
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -106,19 +106,15 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot lastLogin
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot properties
 		(type INSTANCE)
 ;+		(allowed-classes PropertyValue)
 		(create-accessor read-write))
-	(single-slot salt
+	(single-slot lastLogin
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot password
+	(single-slot salt
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -127,11 +123,15 @@
 ;+		(allowed-classes Group)
 		(default [metaproject_Instance_0])
 		(create-accessor read-write))
-	(single-slot name_
+	(single-slot password
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot email
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot name_
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -175,14 +175,14 @@
 		(type INSTANCE)
 ;+		(allowed-classes PropertyValue)
 		(create-accessor read-write))
-	(multislot allowedOperation
-		(type INSTANCE)
-;+		(allowed-classes Operation)
-		(create-accessor read-write))
 	(single-slot allowedGroup
 		(type INSTANCE)
 ;+		(allowed-classes Group)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot allowedOperation
+		(type INSTANCE)
+;+		(allowed-classes Operation)
 		(create-accessor read-write)))
 
 (defclass PolicyControlledObject
@@ -257,11 +257,11 @@
 (defclass PropertyValue
 	(is-a USER)
 	(role concrete)
-	(single-slot propertyName
+	(single-slot propertyValue
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot propertyValue
+	(single-slot propertyName
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
